@@ -38,7 +38,8 @@ int main()
 	}
 	else
 	{
-		if(j != 0) f = 0;
+		if(j != 0) {}
+        else {}
 	}
 	return 0;
 }

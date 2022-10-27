@@ -5,7 +5,7 @@
 
 std::vector<std::string> keywords = {"auto", "break", "case", "char", "const", "continue",
                                      "default", "do", "double", "else", "enum", "extern", "float",
-                                     "for", "foto", "if", "int", "main", "long", "main", "register", "return", "short",
+                                     "for", "foto", "if", "int", "long", "register", "return", "short",
                                      "signed", "sizeof", "static", "struct", "switch", "typeof", "union",
                                      "unsigned", "void", "volatile", "while"};
 
@@ -45,6 +45,15 @@ int main() {
                 }
                 i = j + 1;
             }
+            if (j == n-1 && line[j] >= 'a' && line[j] <= 'z') {
+                std::string s = line.substr(i, n-i);
+                for (auto &w : keywords) {
+                    if (s == w) {
+                        ans++;
+                        break;
+                    }
+                }
+            }
             j++;
         }
     }
@@ -83,22 +92,18 @@ int main() {
     std::stack<if_struct> stk;
     while (std::getline(fin2, buf)) {
         for (int i = 0; i < buf.size(); i++) {
-            if (buf.substr(i, 2) == "if" && buf[i-2] != 'e') {
+            if (buf.substr(i, 2) == "if" && buf[i - 2] != 'e') {
                 if (stk.empty() || i != stk.top().if_pos) {
                     if_struct p = {0, 0, i};
                     stk.push(p);
                 }
             }
             if (!stk.empty() && buf.substr(i, 7) == "else if") stk.top().else_if_num++;
-            if (!stk.empty() && buf.substr(i, 4) == "else" && buf.substr(i, 7) != "else if") stk.top().else_num++;
-            if (!stk.empty() && buf[stk.top().if_pos]  == '}') {
+            if (!stk.empty() && buf.substr(i, 4) == "else" && buf.substr(i, 7) != "else if") {
+                stk.top().else_num++;
                 auto tp = stk.top();
                 stk.pop();
-                if (tp.else_if_num != 0) {
-                    tp.else_num == 0 ? elseifnum++ : else_num++;
-                } else {
-                    else_num += tp.else_num;
-                }
+                tp.else_if_num == 0 ? else_num++ : elseifnum++;
             }
         }
     }
