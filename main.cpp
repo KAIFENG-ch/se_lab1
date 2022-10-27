@@ -112,9 +112,9 @@ int main() {
         std::cout << std::endl;
     }
     if (level > 2) {
-        std::cout << "if-else num: 2" << std::endl;
+        std::cout << "if-else num:" << else_num << std::endl;
     }
     if (level > 3) {
-        std::cout << "if-elseif-else num: 2" << std::endl;
+        std::cout << "if-elseif-else num: " << elseifnum << std::endl;
     }
 }
