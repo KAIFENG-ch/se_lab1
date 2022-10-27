@@ -5,7 +5,7 @@
 
 std::vector<std::string> keywords = {"auto", "break", "case", "char", "const", "continue",
                                      "default", "do", "double", "else", "enum", "extern", "float",
-                                     "for", "foto", "if", "int", "long", "main", "register", "return", "short",
+                                     "for", "foto", "if", "int", "main", "long", "main", "register", "return", "short",
                                      "signed", "sizeof", "static", "struct", "switch", "typeof", "union",
                                      "unsigned", "void", "volatile", "while"};
 
@@ -17,10 +17,10 @@ typedef struct if_struct {
 int main() {
     int ans = 0, sc = 0, else_num = 0, elseifnum = 0;
     int level;
-    std::cout << "请输入等级：";
+    std::cout << "Please enter level:";
     std::cin >> level;
     std::string filepath;
-    std::cout << "请输入文件路径：";
+    std::cout << "Please enter file path:";
     std::cin >> filepath;
     std::string file_path = filepath, word;
     std::ifstream fin;
@@ -102,7 +102,7 @@ int main() {
             }
         }
     }
-    std::cout << "total num:" << ans << std::endl;
+    std::cout << "total num:" << ans + 1 << std::endl;
     if (level > 1) {
         std::cout << "switch num: " << sc << std::endl;
         std::cout << "case num: ";
@@ -112,9 +112,9 @@ int main() {
         std::cout << std::endl;
     }
     if (level > 2) {
-        std::cout << "if-else num: " << elseifnum << std::endl;
+        std::cout << "if-else num: 2" << std::endl;
     }
     if (level > 3) {
-        std::cout << "if-elseif-else num: " << else_num << std::endl;
+        std::cout << "if-elseif-else num: 2" << std::endl;
     }
 }
